@@ -1,20 +1,21 @@
 const routes = require('express').Router()
-const WebXpath = require('../models/xpath-web')
+const WebXpath = require('../models/xpath-input')
 
-routes.get('/xpaths', (req, res) => {
-    return res.json({ok : 'ok'})
+routes.get('/', async (req, res) => {
+    const inputXpath = await WebXpath.find()
+    return res.statusCode(200).json(inputXpath)
 })
 
 routes.post('/web/xpath', async (req, res) => {
 
-    const { platform, elementType, xpath} = req.param
+    const { platform, elementType, content} = req.body
     const webXpath = await WebXpath.create({
         platform,
         elementType,
-        xpath,
+        content,
     })
 
-    return res.json(webXpath)
+    return res.json({webXpath})
 })
 
 module.exports = routes
