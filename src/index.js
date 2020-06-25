@@ -8,7 +8,7 @@ const app = express()
 /**
  * Data base
  */
-
+//mongodb+srv://deploy:<password>@cluster0-v7uhu.mongodb.net/<dbname>?retryWrites=true&w=majority
  mongoose.connect('mongodb://localhost:27017/xpaths', {
      useNewUrlParser: true
  })
