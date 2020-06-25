@@ -3,7 +3,7 @@ const WebXpath = require('../models/xpath-input')
 
 routes.get('/', async (req, res) => {
     const inputXpath = await WebXpath.find()
-    return res.statusCode(200).json(inputXpath)
+    return res.status(200).json(inputXpath)
 })
 
 routes.post('/web/xpath', async (req, res) => {
